@@ -81,38 +81,6 @@ class IO:
         except KeyError as e:
             print(f"Error: Missing parameter {e} in the file.")
 
-    @staticmethod
-    def save_hyperparameters(
-        lr: float,
-        weight_decay: float,
-        batch_size: int,
-        dropout_prob: float,
-        filepath: str,
-    ) -> None:
-        hyperparameters = {
-            "learning rate": lr,
-            "weight decay": weight_decay,
-            "batch size": batch_size,
-            "dropout prob": dropout_prob,
-        }
-        np.savez(filepath, **hyperparameters)
-
-    @staticmethod
-    def load_hyperparameters(filepath: str) -> dict:
-        try:
-            data = np.load(filepath, allow_pickle=True)
-            return {
-                "learning rate": float(data["learning rate"]),
-                "weight decay": float(data["weight decay"]),
-                "batch size": int(data["batch size"]),
-                "dropout prob": float(data["dropout prob"]),
-            }
-        except FileNotFoundError:
-            print(f"Error: File '{filepath}' not found.")
-        except KeyError as e:
-            print(f"Error: Missing hyperparameter {e} in the file.")
-        return {}
-
 
 class Network:
     def __init__(self):
