@@ -147,7 +147,7 @@ def train(training_file, save_weights) -> None:
 
     models_dir = Path(__file__).resolve().parent.parent / "models" / "untested"
     if save_weights:
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
         run_dir = models_dir / timestamp
         run_dir.mkdir(parents=True, exist_ok=True)
         weights_path = str(run_dir / "model_parameters.npz")
